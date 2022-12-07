@@ -58,6 +58,12 @@ function App() {
       {newfilteredIssues.length > 0 && (
         <CardList filteredIssues={newfilteredIssues} />
       )}
+      {searchField.length >= 3 && newfilteredIssues.length === 0 && (
+        <h3>No issues found</h3>
+      )}
+      {searchField.length > 0 && searchField.length < 3 && (
+        <h3>Type at least 3 characters</h3>
+      )}
     </div>
   );
 }
