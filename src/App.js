@@ -43,9 +43,11 @@ function App() {
     setSearchField(value);
   };
 
-  const newfilteredIssues = issues.filter((issue) => {
-    return issue.title.includes(searchField.toLocaleLowerCase());
-  });
+  const newfilteredIssues =
+    searchField.length >= 3 &&
+    issues.filter((issue) => {
+      return issue.title.includes(searchField.toLocaleLowerCase());
+    });
 
   return (
     <div className="App">
@@ -53,7 +55,7 @@ function App() {
         onChangeInputHandler={onInputSearchChange}
         placeholder="search for an issue"
       />
-      {searchField.length > 0 && (
+      {newfilteredIssues.length > 0 && (
         <CardList filteredIssues={newfilteredIssues} />
       )}
     </div>
